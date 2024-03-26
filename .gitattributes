@@ -1,0 +1,168 @@
+#
+# This file contains rules that control how Git handles binary and text files, including line endings
+#
+ 
+
+# Make sure Windows batch files preserve CR/LF line endings, otherwise they may not be able to execute.  Windows
+# batch files require a CR/LF for labels to work properly, otherwise they may fail when labels straddle 512-byte
+# block boundaries.  This is important when files are downloaded through a zip archive that was authored on a
+# Linux machine (the default behavior on GitHub)
+
+*.bat eol=crlf
+*.sh eol=lf
+
+* text=auto
+
+#Binary Unreal Files
+*.uasset filter=lfs diff=lfs merge=lfs -text lockable
+*.umap filter=lfs diff=lfs merge=lfs -text lockable
+*.ico filter=lfs diff=lfs merge=lfs -text lockable
+*.upack filter=lfs diff=lfs merge=lfs -text lockable
+*.locres filter=lfs diff=lfs merge=lfs -text lockable
+*.locmeta filter=lfs diff=lfs merge=lfs -text lockable
+*.uexp filter=lfs diff=lfs merge=lfs -text lockable
+
+# Other binary files
+*.3DS filter=lfs diff=lfs merge=lfs -text lockable
+*.3ds filter=lfs diff=lfs merge=lfs -text lockable
+*.ABC filter=lfs diff=lfs merge=lfs -text lockable
+*.AEP filter=lfs diff=lfs merge=lfs -text lockable
+*.AFDESIGN filter=lfs diff=lfs merge=lfs -text lockable
+*.AFPHOTO filter=lfs diff=lfs merge=lfs -text lockable
+*.AI filter=lfs diff=lfs merge=lfs -text lockable
+*.AIF filter=lfs diff=lfs merge=lfs -text lockable
+*.AVI filter=lfs diff=lfs merge=lfs -text lockable
+*.BGEO filter=lfs diff=lfs merge=lfs -text lockable
+*.BIN filter=lfs diff=lfs merge=lfs -text lockable
+*.BLEND filter=lfs diff=lfs merge=lfs -text lockable
+*.BMP filter=lfs diff=lfs merge=lfs -text lockable
+*.BPOLY filter=lfs diff=lfs merge=lfs -text lockable
+*.C4D filter=lfs diff=lfs merge=lfs -text lockable
+*.DAE filter=lfs diff=lfs merge=lfs -textlockable
+*.DOC filter=lfs diff=lfs merge=lfs -text lockable
+*.DOCX filter=lfs diff=lfs merge=lfs -text lockable
+*.DWG filter=lfs diff=lfs merge=lfs -text lockable
+*.DXF filter=lfs diff=lfs merge=lfs -text lockable
+*.EXR filter=lfs diff=lfs merge=lfs -text lockable
+*.FBX filter=lfs diff=lfs merge=lfs -text lockable
+*.GEO filter=lfs diff=lfs merge=lfs -text lockable 
+*.GI filter=lfs diff=lfs merge=lfs -text lockable
+*.GI2 filter=lfs diff=lfs merge=lfs -text lockable
+*.GIF filter=lfs diff=lfs merge=lfs -text lockable
+*.GLB filter=lfs diff=lfs merge=lfs -text lockable
+*.GLTF filter=lfs diff=lfs merge=lfs -text lockable
+*.HDR filter=lfs diff=lfs merge=lfs -text lockable
+*.HIP filter=lfs diff=lfs merge=lfs -text lockable
+*.HIPLC filter=lfs diff=lfs merge=lfs -text lockable
+*.HIPNC filter=lfs diff=lfs merge=lfs -text lockable
+*.JPEG filter=lfs diff=lfs merge=lfs -text lockable
+*.JPG filter=lfs diff=lfs merge=lfs -text lockable
+*.MA filter=lfs diff=lfs merge=lfs -text lockable
+*.MAX filter=lfs diff=lfs merge=lfs -text lockable
+*.MB filter=lfs diff=lfs merge=lfs -text lockable
+*.MOV filter=lfs diff=lfs merge=lfs -text lockable
+*.MP3 filter=lfs diff=lfs merge=lfs -text lockable
+*.MP4 filter=lfs diff=lfs merge=lfs -text lockable
+*.MPEG filter=lfs diff=lfs merge=lfs -text lockable
+*.MPG filter=lfs diff=lfs merge=lfs -text lockable
+*.OBJ filter=lfs diff=lfs merge=lfs -text lockable
+*.PDF filter=lfs diff=lfs merge=lfs -text lockable
+*.PFM filter=lfs diff=lfs merge=lfs -text lockable
+*.PIC filter=lfs diff=lfs merge=lfs -text lockable
+*.PMB filter=lfs diff=lfs merge=lfs -text lockable
+*.PNG filter=lfs diff=lfs merge=lfs -text lockable
+*.POLY filter=lfs diff=lfs merge=lfs -text lockable
+*.PPT filter=lfs diff=lfs merge=lfs -text lockable
+*.PPTX filter=lfs diff=lfs merge=lfs -text lockable
+*.PROFRAW filter=lfs diff=lfs merge=lfs -text lockable
+*.PRPROJ filter=lfs diff=lfs merge=lfs -text lockable
+*.PSB filter=lfs diff=lfs merge=lfs -text lockable
+*.PSD filter=lfs diff=lfs merge=lfs -text lockable
+*.RAT filter=lfs diff=lfs merge=lfs -text lockable
+*.RIB filter=lfs diff=lfs merge=lfs -text lockable
+*.SKETCH filter=lfs diff=lfs merge=lfs -text lockable
+*.STL filter=lfs diff=lfs merge=lfs -text lockable
+*.TAR filter=lfs diff=lfs merge=lfs -text lockable
+*.TIF filter=lfs diff=lfs merge=lfs -text lockable
+*.TIFF filter=lfs diff=lfs merge=lfs -text lockable
+*.USD filter=lfs diff=lfs merge=lfs -text lockable
+*.USDC filter=lfs diff=lfs merge=lfs -text lockable
+*.USDZ filter=lfs diff=lfs merge=lfs -text lockable
+*.VDB filter=lfs diff=lfs merge=lfs -text lockable
+*.WAV filter=lfs diff=lfs merge=lfs -text lockable
+*.XLS filter=lfs diff=lfs merge=lfs -text lockable
+*.XLSX filter=lfs diff=lfs merge=lfs -text lockable
+*.ZIP filter=lfs diff=lfs merge=lfs -text lockable
+*.abc filter=lfs diff=lfs merge=lfs -text lockable
+*.aep filter=lfs diff=lfs merge=lfs -text lockable
+*.afdesign filter=lfs diff=lfs merge=lfs -text lockable
+*.afphoto filter=lfs diff=lfs merge=lfs -text lockable
+*.ai filter=lfs diff=lfs merge=lfs -text lockable
+*.aif filter=lfs diff=lfs merge=lfs -text lockable
+*.avi filter=lfs diff=lfs merge=lfs -text lockable
+*.bgeo filter=lfs diff=lfs merge=lfs -text lockable
+*.bin filter=lfs diff=lfs merge=lfs -text lockable
+*.blend filter=lfs diff=lfs merge=lfs -text lockable
+*.bmp filter=lfs diff=lfs merge=lfs -text lockable
+*.bpoly filter=lfs diff=lfs merge=lfs -text lockable
+*.c4d filter=lfs diff=lfs merge=lfs -text lockable
+*.dae filter=lfs diff=lfs merge=lfs -text lockable
+*.doc filter=lfs diff=lfs merge=lfs -text lockable
+*.docx filter=lfs diff=lfs merge=lfs -text lockable
+*.dwg filter=lfs diff=lfs merge=lfs -text lockable
+*.dxf filter=lfs diff=lfs merge=lfs -text lockable
+*.exr filter=lfs diff=lfs merge=lfs -text lockable
+*.fbx filter=lfs diff=lfs merge=lfs -text lockable
+*.geo filter=lfs diff=lfs merge=lfs -text lockable
+*.gi filter=lfs diff=lfs merge=lfs -text lockable
+*.gi2 filter=lfs diff=lfs merge=lfs -text lockable
+*.gif filter=lfs diff=lfs merge=lfs -text lockable
+*.glb filter=lfs diff=lfs merge=lfs -text lockable
+*.gltf filter=lfs diff=lfs merge=lfs -text lockable
+*.hdr filter=lfs diff=lfs merge=lfs -text lockable
+*.hip filter=lfs diff=lfs merge=lfs -text lockable
+*.hiplc filter=lfs diff=lfs merge=lfs -text lockable
+*.hipnc filter=lfs diff=lfs merge=lfs -text lockable
+*.img filter=lfs diff=lfs merge=lfs -text lockable
+*.jpeg filter=lfs diff=lfs merge=lfs -text lockable
+*.jpg filter=lfs diff=lfs merge=lfs -text lockable
+*.ma filter=lfs diff=lfs merge=lfs -text lockable
+*.max filter=lfs diff=lfs merge=lfs -text lockable
+*.mb filter=lfs diff=lfs merge=lfs -text lockable
+*.mov filter=lfs diff=lfs merge=lfs -text lockable
+*.mp3 filter=lfs diff=lfs merge=lfs -text lockable
+*.mp4 filter=lfs diff=lfs merge=lfs -text lockable
+*.mpeg filter=lfs diff=lfs merge=lfs -text lockable
+*.mpg filter=lfs diff=lfs merge=lfs -text lockable
+*.obj filter=lfs diff=lfs merge=lfs -text lockable
+*.pdf filter=lfs diff=lfs merge=lfs -text lockable
+*.pfm filter=lfs diff=lfs merge=lfs -text lockable
+*.pic filter=lfs diff=lfs merge=lfs -text lockable
+*.pmb filter=lfs diff=lfs merge=lfs -text lockable
+*.png filter=lfs diff=lfs merge=lfs -text lockable
+*.poly filter=lfs diff=lfs merge=lfs -text lockable
+*.ppt filter=lfs diff=lfs merge=lfs -text lockable
+*.pptx filter=lfs diff=lfs merge=lfs -text lockable
+*.profraw filter=lfs diff=lfs merge=lfs -text lockable
+*.prproj filter=lfs diff=lfs merge=lfs -text lockable
+*.psb filter=lfs diff=lfs merge=lfs -text lockable
+*.psd filter=lfs diff=lfs merge=lfs -text lockable
+*.rat filter=lfs diff=lfs merge=lfs -text lockable
+*.rib filter=lfs diff=lfs merge=lfs -text lockable
+*.sketch filter=lfs diff=lfs merge=lfs -text lockable
+*.stl filter=lfs diff=lfs merge=lfs -text lockable
+*.tar filter=lfs diff=lfs merge=lfs -text lockable
+*.tif filter=lfs diff=lfs merge=lfs -text lockable
+*.tiff filter=lfs diff=lfs merge=lfs -text lockable
+*.usd filter=lfs diff=lfs merge=lfs -text lockable
+*.usdc filter=lfs diff=lfs merge=lfs -text lockable
+*.usdz filter=lfs diff=lfs merge=lfs -text lockable
+*.vdb filter=lfs diff=lfs merge=lfs -text lockable
+*.wav filter=lfs diff=lfs merge=lfs -text lockable
+*.xls filter=lfs diff=lfs merge=lfs -text lockable
+*.xlsx filter=lfs diff=lfs merge=lfs -text lockable
+*.zip filter=lfs diff=lfs merge=lfs -text lockable
+*.dll filter=lfs diff=lfs merge=lfs -text lockable
+*.exe filter=lfs diff=lfs merge=lfs -text lockable
+*.exp filter=lfs diff=lfs merge=lfs -text lockable
+*.tff filter=lfs diff=lfs merge=lfs -text lockable
