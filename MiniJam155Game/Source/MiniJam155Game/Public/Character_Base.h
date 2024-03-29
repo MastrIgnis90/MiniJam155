@@ -29,6 +29,8 @@ class MINIJAM155GAME_API ACharacter_Base : public ACharacter
 	TObjectPtr<UInputMappingContext> DefaultMappingContext;
 
 
+	UPROPERTY(EditAnywhere)
+	TObjectPtr<UStaticMeshComponent> Cursor;
 public:
 	// Sets default values for this character's properties
 	ACharacter_Base();

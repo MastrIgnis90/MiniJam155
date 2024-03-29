@@ -6,9 +6,7 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputComponent_Default.h"
 #include "Camera/CameraComponent.h"
-#include "Components/BoxComponent.h"
 #include "Components/CapsuleComponent.h"
-#include "Kismet/KismetMathLibrary.h"
 #include "System/GameplayTags.h"
 
 
@@ -28,7 +26,8 @@ ACharacter_Base::ACharacter_Base()
 	BoxMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("CharacterBox"));
 	BoxMeshComponent->SetupAttachment(RootComponent);
 
-	
+	Cursor = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Cursor"));
+	Cursor->SetupAttachment(RootComponent);
 	
 }
 
@@ -89,6 +88,15 @@ void ACharacter_Base::Input_Aim(const FInputActionValue& InputActionValue)
 		}
 	}
 	*/
+
+	if(IsValid(Controller))
+	{
+		FHitResult HitResult;
+		if(Cast<APlayerController>(Controller)->GetHitResultUnderCursorByChannel(TraceTypeQuery1, true, HitResult))
+		{
+			Cursor->SetWorldLocation(HitResult.Location);
+		}
+	}
 }
 
 
