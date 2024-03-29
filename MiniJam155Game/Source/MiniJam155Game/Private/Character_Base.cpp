@@ -1,4 +1,4 @@
-﻿// Fill out your copyright notice in the Description page of Project Settings.
+// Fill out your copyright notice in the Description page of Project Settings.
 
 
 #include "Character_Base.h"
@@ -25,8 +25,10 @@ ACharacter_Base::ACharacter_Base()
 	FollowCamera->SetRelativeLocation(FVector(-40.f, 1.75f, 64.f));
 	FollowCamera->bUsePawnControlRotation = false;
 
-	BoxComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("CharacterBox"));
-	BoxComponent->SetupAttachment(RootComponent);
+	BoxMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("CharacterBox"));
+	BoxMeshComponent->SetupAttachment(RootComponent);
+
+	
 	
 }
 
@@ -34,7 +36,6 @@ ACharacter_Base::ACharacter_Base()
 void ACharacter_Base::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called to bind functionality to input
@@ -71,21 +72,25 @@ void ACharacter_Base::Input_Move(const FInputActionValue& InputActionValue)
 	}
 }
 
+
 void ACharacter_Base::Input_Aim(const FInputActionValue& InputActionValue)
 {
+	/*
 	if(IsValid(Controller))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("TEst"))
 		const FVector2D AimValue = InputActionValue.Get<FVector2D>();
 		FHitResult HitResult;
 
-		if(Cast<APlayerController>(Controller)->GetHitResultUnderCursorByChannel(TraceTypeQuery1, true, HitResult))
+		if(Cast<APlayerController>(Controller)->GetHitResultUnderCursorByChannel(UEngineTypes::ConvertToTraceType(ECC_Camera), true, HitResult))
 		{
-			const FRotator Rotator = FRotator(GetActorRotation().Roll, GetActorRotation().Pitch, UKismetMathLibrary::FindLookAtRotation(GetActorLocation(),HitResult.Location).Yaw);
-			BoxComponent->SetWorldRotation(Rotator);
+			UE_LOG(LogTemp, Warning, TEXT("%s"), *HitResult.Location.ToString())
+			const FRotator Rotator = FRotator(GetActorRotation().Roll, UKismetMathLibrary::FindLookAtRotation(GetActorLocation(), HitResult.Location).Pitch, GetActorRotation().Yaw);
+			BoxMeshComponent->SetWorldRotation(Rotator);
 		}
 	}
+	*/
 }
+
 
 void ACharacter_Base::TurnAtRate(float Rate)
 {

@@ -1,4 +1,4 @@
-﻿// Fill out your copyright notice in the Description page of Project Settings.
+// Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
 
@@ -28,13 +28,13 @@ class MINIJAM155GAME_API ACharacter_Base : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess="true"))
 	TObjectPtr<UInputMappingContext> DefaultMappingContext;
 
-	UPROPERTY(EditAnywhere)
-	TObjectPtr<UBoxComponent> BoxComponent;
-
 
 public:
 	// Sets default values for this character's properties
 	ACharacter_Base();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(AllowPrivateAccess="true"))
+	TObjectPtr<UStaticMeshComponent> BoxMeshComponent;
 
 protected:
 	// Called when the game starts or when spawned
