@@ -5,9 +5,9 @@
 
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputComponent_Default.h"
-#include "GameplayTags.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "System/GameplayTags.h"
 
 
 // Sets default values

@@ -10,6 +10,7 @@ public class MiniJam155Editor : ModuleRules
             new string[]
             {
                 "Core",
+                "UnrealEd"
             }
         );
 

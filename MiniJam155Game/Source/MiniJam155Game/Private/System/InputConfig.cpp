@@ -1,7 +1,7 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "InputConfig.h"
+#include "System/InputConfig.h"
 
 const UInputAction* UInputConfig::FindInputActionForTag(const FGameplayTag& InputTag) const
 {

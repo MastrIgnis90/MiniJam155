@@ -4,11 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "EnhancedInputComponent.h"
-#include "InputConfig.h"
+#include "System/InputConfig.h"
 #include "EnhancedInputComponent_Default.generated.h"
 
 struct FGameplayTag;
-class UInputConfig;
 /**
  * 
  */

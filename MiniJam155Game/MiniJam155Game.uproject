@@ -11,6 +11,11 @@
 			"AdditionalDependencies": [
 				"EnhancedInput"
 			]
+		},
+		{
+			"Name": "MiniJam155Editor",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
 		}
 	],
 	"Plugins": [

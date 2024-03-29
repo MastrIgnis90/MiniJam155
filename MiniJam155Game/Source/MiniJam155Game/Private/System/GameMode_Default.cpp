@@ -1,7 +1,7 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "GameMode_Default.h"
+#include "System/GameMode_Default.h"
 
 AGameMode_Default::AGameMode_Default()
 {

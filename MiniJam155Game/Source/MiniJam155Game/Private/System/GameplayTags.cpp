@@ -2,6 +2,8 @@
 
 
 #include "GameplayTags.h"
+#include "System/GameplayTags.h"
+
 #include "GameplayTagsManager.h"
 
 FGameplayTags FGameplayTags::GameplayTags;
