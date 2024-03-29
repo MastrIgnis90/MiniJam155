@@ -7,6 +7,7 @@
 #include "GameFramework/Character.h"
 #include "Character_Base.generated.h"
 
+class UBoxComponent;
 class UInputMappingContext;
 class UCameraComponent;
 class USpringArmComponent;
@@ -27,6 +28,10 @@ class MINIJAM155GAME_API ACharacter_Base : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess="true"))
 	TObjectPtr<UInputMappingContext> DefaultMappingContext;
 
+	UPROPERTY(EditAnywhere)
+	TObjectPtr<UBoxComponent> BoxComponent;
+
+
 public:
 	// Sets default values for this character's properties
 	ACharacter_Base();
@@ -41,7 +46,10 @@ private:
 	TObjectPtr<UInputConfig> InputConfig;
 
 	void Input_Move(const FInputActionValue& InputActionValue);
-	void Input_Jump(const FInputActionValue& InputActionValue);
+	void Input_Aim(const FInputActionValue& InputActionValue);
+
+	void TurnAtRate(float Rate);
+	void LookAtRate(float Rate);
 
 public:
 	FORCEINLINE USpringArmComponent* GetCameraBoom() const { return CameraBoom; }

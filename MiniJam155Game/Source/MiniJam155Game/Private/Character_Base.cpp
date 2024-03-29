@@ -6,7 +6,9 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputComponent_Default.h"
 #include "Camera/CameraComponent.h"
+#include "Components/BoxComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "Kismet/KismetMathLibrary.h"
 #include "System/GameplayTags.h"
 
 
@@ -21,8 +23,10 @@ ACharacter_Base::ACharacter_Base()
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FirstPersonCamera"));
 	FollowCamera->SetupAttachment(GetCapsuleComponent());
 	FollowCamera->SetRelativeLocation(FVector(-40.f, 1.75f, 64.f));
-	FollowCamera->bUsePawnControlRotation = true;
+	FollowCamera->bUsePawnControlRotation = false;
 
+	BoxComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("CharacterBox"));
+	BoxComponent->SetupAttachment(RootComponent);
 	
 }
 
@@ -43,6 +47,7 @@ void ACharacter_Base::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 	const FGameplayTags& GameplayTags = FGameplayTags::Get();
 
 	EnhancedInputComponent->BindActionByTag(InputConfig, GameplayTags.InputTag_Move, ETriggerEvent::Triggered, this, &ACharacter_Base::Input_Move);
+	EnhancedInputComponent->BindActionByTag(InputConfig, GameplayTags.InputTag_Aim, ETriggerEvent::Triggered, this, &ACharacter_Base::Input_Aim);
 }
 
 void ACharacter_Base::Input_Move(const FInputActionValue& InputActionValue)
@@ -64,5 +69,31 @@ void ACharacter_Base::Input_Move(const FInputActionValue& InputActionValue)
 			AddMovementInput(MovementDirection, MoveValue.Y);
 		}
 	}
+}
+
+void ACharacter_Base::Input_Aim(const FInputActionValue& InputActionValue)
+{
+	if(IsValid(Controller))
+	{
+		UE_LOG(LogTemp, Warning, TEXT("TEst"))
+		const FVector2D AimValue = InputActionValue.Get<FVector2D>();
+		FHitResult HitResult;
+
+		if(Cast<APlayerController>(Controller)->GetHitResultUnderCursorByChannel(TraceTypeQuery1, true, HitResult))
+		{
+			const FRotator Rotator = FRotator(GetActorRotation().Roll, GetActorRotation().Pitch, UKismetMathLibrary::FindLookAtRotation(GetActorLocation(),HitResult.Location).Yaw);
+			BoxComponent->SetWorldRotation(Rotator);
+		}
+	}
+}
+
+void ACharacter_Base::TurnAtRate(float Rate)
+{
+	AddControllerYawInput(Rate * GetWorld()->GetDeltaSeconds());
+}
+
+void ACharacter_Base::LookAtRate(float Rate)
+{
+	AddControllerPitchInput(Rate * GetWorld()->GetDeltaSeconds());
 }
 

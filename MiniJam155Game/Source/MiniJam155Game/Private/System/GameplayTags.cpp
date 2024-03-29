@@ -20,7 +20,7 @@ void FGameplayTags::InitializeNativeTags()
 void FGameplayTags::AddAllTags(UGameplayTagsManager& Manager)
 {
 	AddTag(InputTag_Move, "InputTag.Move", "Move Input.");
-	AddTag(InputTag_Jump, "InputTag.Jump", "Jump input.");
+	AddTag(InputTag_Aim, "InputTag.Aim", "Aim Input.");
 }
 
 void FGameplayTags::AddTag(FGameplayTag& OutTag, const ANSICHAR* TagName, const ANSICHAR* TagComment)

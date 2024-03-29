@@ -17,7 +17,7 @@ public:
 	static void InitializeNativeTags();
 
 	FGameplayTag InputTag_Move;
-	FGameplayTag InputTag_Jump;
+	FGameplayTag InputTag_Aim;
 
 protected:
 	void AddAllTags(UGameplayTagsManager& Manager);
