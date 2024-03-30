@@ -6,7 +6,9 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputComponent_Default.h"
 #include "Camera/CameraComponent.h"
+#include "Components/ArrowComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "Kismet/KismetMathLibrary.h"
 #include "System/GameplayTags.h"
 
 
@@ -74,25 +76,17 @@ void ACharacter_Base::Input_Move(const FInputActionValue& InputActionValue)
 
 void ACharacter_Base::Input_Aim(const FInputActionValue& InputActionValue)
 {
-	/*
 	if(IsValid(Controller))
 	{
-		const FVector2D AimValue = InputActionValue.Get<FVector2D>();
-		FHitResult HitResult;
-
-		if(Cast<APlayerController>(Controller)->GetHitResultUnderCursorByChannel(UEngineTypes::ConvertToTraceType(ECC_Camera), true, HitResult))
+		FVector WorldLocation;
+		FVector _WorldDirection;
+		if(Cast<APlayerController>(Controller)->DeprojectMousePositionToWorld(WorldLocation, _WorldDirection))
 		{
-			UE_LOG(LogTemp, Warning, TEXT("%s"), *HitResult.Location.ToString())
-			const FRotator Rotator = FRotator(GetActorRotation().Roll, UKismetMathLibrary::FindLookAtRotation(GetActorLocation(), HitResult.Location).Pitch, GetActorRotation().Yaw);
-			BoxMeshComponent->SetWorldRotation(Rotator);
+			BoxMeshComponent->SetWorldRotation(FRotator(0,UKismetMathLibrary::FindLookAtRotation(GetActorLocation(), WorldLocation).Yaw,0));
 		}
-	}
-	*/
 
-	if(IsValid(Controller))
-	{
 		FHitResult HitResult;
-		if(Cast<APlayerController>(Controller)->GetHitResultUnderCursorByChannel(TraceTypeQuery1, true, HitResult))
+		if(Cast<APlayerController>(Controller)->GetHitResultUnderCursorByChannel(TraceTypeQuery1, false, HitResult))
 		{
 			Cursor->SetWorldLocation(HitResult.Location);
 		}
