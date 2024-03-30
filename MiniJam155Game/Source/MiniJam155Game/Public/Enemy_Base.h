@@ -1,0 +1,34 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "GameFramework/Character.h"
+#include "Perception/AIPerceptionTypes.h"
+#include "Enemy_Base.generated.h"
+
+class UFloatingPawnMovement;
+class UBoxComponent;
+
+UCLASS()
+class MINIJAM155GAME_API AEnemy_Base : public APawn
+{
+	GENERATED_BODY()
+
+public:
+	// Sets default values for this character's properties
+	AEnemy_Base();
+
+private:
+	
+
+	UPROPERTY(EditDefaultsOnly)
+	TObjectPtr<UBoxComponent> BoxComponent;
+
+	UPROPERTY(EditDefaultsOnly)
+	TObjectPtr<UStaticMeshComponent> StaticMeshComponent;
+
+	UPROPERTY(EditDefaultsOnly)
+	TObjectPtr<UFloatingPawnMovement> PawnMovementComponent;
+
+};
