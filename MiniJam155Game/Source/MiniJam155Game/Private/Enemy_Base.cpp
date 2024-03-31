@@ -19,6 +19,7 @@ AEnemy_Base::AEnemy_Base()
 	StaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh"));
 	StaticMeshComponent->SetupAttachment(RootComponent);
 	StaticMeshComponent->SetCollisionProfileName(FName("NoCollision"), false);
+	StaticMeshComponent->SetStaticMesh(LoadObject<UStaticMesh>(nullptr, TEXT("/Engine/BasicShapes/Cube")));
 
 	AutoPossessAI = EAutoPossessAI::PlacedInWorldOrSpawned;
 	AIControllerClass = AEnemyAIController::StaticClass();
