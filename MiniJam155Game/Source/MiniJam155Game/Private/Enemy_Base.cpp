@@ -17,9 +17,11 @@ AEnemy_Base::AEnemy_Base()
 	StaticMeshComponent->SetupAttachment(RootComponent);
 	StaticMeshComponent->SetCollisionProfileName(FName("NoCollision"), false);
 	StaticMeshComponent->SetStaticMesh(LoadObject<UStaticMesh>(nullptr, TEXT("/Engine/BasicShapes/Sphere")));
+	StaticMeshComponent->AddLocalOffset(FVector(0,0,63));
 
 	AutoPossessAI = EAutoPossessAI::PlacedInWorldOrSpawned;
 	AIControllerClass = AEnemyAIController::StaticClass();
 
 	PawnMovementComponent = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("Movement"));
+	PawnMovementComponent->MaxSpeed = 500.0;
 }

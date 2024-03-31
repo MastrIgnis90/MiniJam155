@@ -2,6 +2,7 @@
 
 #include "MyWorldSubsystem.h"
 #include "Enemy_Base.h"
+#include "GameFramework/Character.h"
 #include "Kismet/GameplayStatics.h"
 
 bool UMyWorldSubsystem::ShouldCreateSubsystem(UObject* Outer) const
@@ -18,7 +19,7 @@ void UMyWorldSubsystem::OnWorldBeginPlay(UWorld& InWorld)
 void UMyWorldSubsystem::SpawnWave() 
 {
 	FVector PlayerPosition = PlayerCharacter->GetActorLocation();
-	FVector SpawnVector = FVector(SpawnRadius, SpawnRadius, 0) + PlayerPosition;
+	FVector SpawnVector = FVector(SpawnRadius, SpawnRadius, -61.275) + PlayerPosition;
 	FRotator SpawnRotation = FRotator::MakeFromEuler(FVector(0, 0, FMath::RandRange(0, 360)));
 	FVector SpawnPosition = SpawnRotation.RotateVector(SpawnVector);
 	

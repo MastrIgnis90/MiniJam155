@@ -3,8 +3,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Character.h"
-#include "Perception/AIPerceptionTypes.h"
 #include "Enemy_Base.generated.h"
 
 class UFloatingPawnMovement;
