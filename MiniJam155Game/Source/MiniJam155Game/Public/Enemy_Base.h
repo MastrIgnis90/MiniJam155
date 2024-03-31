@@ -24,6 +24,6 @@ private:
 	UPROPERTY(EditDefaultsOnly)
 	TObjectPtr<UStaticMeshComponent> StaticMeshComponent;
 
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, meta=(AllowPrivateAccess="True"))
 	TObjectPtr<UFloatingPawnMovement> PawnMovementComponent;
 };
