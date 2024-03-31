@@ -8,7 +8,7 @@
 #include "Enemy_Base.generated.h"
 
 class UFloatingPawnMovement;
-class UBoxComponent;
+class USphereComponent;
 
 UCLASS()
 class MINIJAM155GAME_API AEnemy_Base : public APawn
@@ -20,15 +20,12 @@ public:
 	AEnemy_Base();
 
 private:
-	
-
 	UPROPERTY(EditDefaultsOnly)
-	TObjectPtr<UBoxComponent> BoxComponent;
+	TObjectPtr<USphereComponent> SphereComponent;
 
 	UPROPERTY(EditDefaultsOnly)
 	TObjectPtr<UStaticMeshComponent> StaticMeshComponent;
 
 	UPROPERTY(EditDefaultsOnly)
 	TObjectPtr<UFloatingPawnMovement> PawnMovementComponent;
-
 };
